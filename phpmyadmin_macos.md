@@ -182,6 +182,17 @@ Ensure that your firewall is not blocking the connection. Check the system prefe
 
 After going through these steps, you should be able to access PHPMyAdmin at http://localhost/phpmyadmin. If the issue persists, review the logs for error messages that may provide more details about the problem.
 
+## *"ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock'"*
 
+This happened after the homebrew MySQL installation, error might occur due to permission issues. The following commands fixed the issue.
+### 1. Restart mysql service
+```bash
+brew services restart mysql
+```
+### 2. Change the ownership
+```bash
+sudo chown -R _mysql:mysql /usr/local/var/mysql
+sudo mysql.server start
+```
 # Video Link For Tutorial
 For video tutorial Click [Here](https://www.youtube.com/watch?v=SVNbRXUEDUg)
